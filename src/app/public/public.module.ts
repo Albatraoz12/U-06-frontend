@@ -5,9 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
 @NgModule({
-  declarations: [PublicComponent, HomeComponent],
+  declarations: [PublicComponent, HomeComponent, RecipeDetailsComponent],
   imports: [
     CommonModule,
     RouterModule,

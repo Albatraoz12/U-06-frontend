@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   get listFilter(): string {
     return this._listFilter;
   }
+
   set listFilter(value: string) {
     this._listFilter = value;
     this.filteredFood = this.performFiltration(value);
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
   performFiltration(filterBy: string): Food[] {
     filterBy = filterBy.toLowerCase();
     return this.food.filter((food: Food) =>
-      food.name.toLowerCase().includes(filterBy)
+      food.email.toLowerCase().includes(filterBy)
     );
   }
 

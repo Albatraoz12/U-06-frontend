@@ -8,20 +8,38 @@ import { Food } from 'src/app/interface/food';
   providedIn: 'root',
 })
 export class HomeService {
-  constructor(private http: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
-  private foodUrl = 'https://jsonplaceholder.typicode.com/users';
+  private foodUrl = 'https://jsonplaceholder.typicode.com';
 
   getFood(): Observable<Food[]> {
-    return this.http.get<Food[]>(this.foodUrl).pipe(
-      tap((d) => console.log('api response', JSON.stringify(d))),
-      catchError(this.handleError)
-    );
+    return this.httpClient
+      .get<Food[]>(this.foodUrl + '/users/')
+      .pipe(catchError(this.errorHandler));
   }
 
-  private handleError(err: HttpErrorResponse) {
+  find(id: string | number): Observable<Food> {
+    return this.httpClient
+      .get<Food>(this.foodUrl + '/users/' + id)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  errorHandler(error: {
+    error: { message: string };
+    status: any;
+    message: any;
+  }) {
     let errorMessage = '';
-    console.log(err);
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
     return throwError(errorMessage);
   }
+  // private handleError(err: HttpErrorResponse) {
+  //   let errorMessage = '';
+  //   console.log(err);
+  //   return throwError(errorMessage);
+  // }
 }
