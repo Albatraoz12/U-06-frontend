@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit {
 
   performFiltration(filterBy: string): Food[] {
     filterBy = filterBy.toLowerCase();
-    return this.food.filter((user: Food) =>
-      user.name.toLowerCase().includes(filterBy)
+    return this.food.filter((food: Food) =>
+      food.name.toLowerCase().includes(filterBy)
     );
   }
 
