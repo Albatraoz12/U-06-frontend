@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Dimos Recipe App</h1>
+  <h1>{{ pageTitle }}</h1>
   <form>
     <div class="form-group">
       <label for="exampleFormControlInput1"></label>
@@ -19,4 +19,13 @@
       </select>
     </div>
   </form>
+</div>
+<div class="container">
+  <div class="card" style="width: 18rem">
+    <div class="card-body" *ngFor="let food of filteredFood">
+      <h5 class="card-title">{{ food.name }}</h5>
+      <p class="card-text">{{ food.email }} {{ food.phone }}</p>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+  </div>
 </div>
