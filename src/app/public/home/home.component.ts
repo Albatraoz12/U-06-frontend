@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Food } from 'src/app/interface/food';
 import { HomeService } from './home.service';
 
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
   filteredFood: Food[] = [];
   private _listFilter: string = '';
   errMessage: string = '';
+  form!: FormGroup;
 
   constructor(private homeService: HomeService) {}
 
